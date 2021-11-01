@@ -27,7 +27,18 @@
       }
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "react/require-default-props": [0],
+    "jsx-a11y/label-has-for": [
+      2,
+      {
+        "components": [],
+        "required": {
+          "every": ["nesting", "for"]
+        },
+        "allowChildren": true
+      }
+    ]
   },
   "settings": {
     "import/resolver": "webpack"
