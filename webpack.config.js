@@ -1,5 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const dotenv = require('dotenv').config({
+  path: path.resolve(__dirname, '.env.local'),
+});
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {
@@ -32,10 +36,14 @@ const config = {
       Public: path.resolve(__dirname, './public/'),
       Components: path.resolve(__dirname, './src/components/'),
       Hooks: path.resolve(__dirname, './src/hooks/'),
+      Utils: path.resolve(__dirname, './src/utils/'),
     },
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.parsed),
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
     }),
